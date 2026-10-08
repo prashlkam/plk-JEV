@@ -1,0 +1,40 @@
+{
+  "HuggingFaceTB/SmolLM2-135M": {
+    "vocab_size": 49152,
+    "digits_single_token": true,
+    "space_digits_single_token": false,
+    "tag_costs": {
+      "<task:route_v1>": 8,
+      "task:route_v1": 6,
+      "[route_v1]": 6,
+      "route_v1": 4
+    },
+    "safe_terminators": [
+      "\nanswer:",
+      "\nanswer: ",
+      "\n>",
+      "\ndecide:",
+      "\n"
+    ],
+    "recommended_terminator": "\nanswer:"
+  },
+  "Qwen/Qwen3-0.6B-Base": {
+    "vocab_size": 151643,
+    "digits_single_token": true,
+    "space_digits_single_token": false,
+    "tag_costs": {
+      "<task:route_v1>": 7,
+      "task:route_v1": 5,
+      "[route_v1]": 5,
+      "route_v1": 3
+    },
+    "safe_terminators": [
+      "\nanswer:",
+      "\nanswer: ",
+      "\n>",
+      "\ndecide:",
+      "\n"
+    ],
+    "recommended_terminator": "\nanswer:"
+  }
+}

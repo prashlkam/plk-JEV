@@ -1,0 +1,31 @@
+{
+  "id": "gate_human_v1",
+  "version": 1,
+  "kind": "gate",
+  "description": "Safety gate. Abstain is DISABLED: unsure must fail closed to true. The SDK routes sub-threshold confidence to true, never to None.",
+  "question": "does this need a human before any automated reply",
+  "output": {
+    "type": "enum",
+    "values": [
+      "false",
+      "true"
+    ],
+    "codes": [
+      0,
+      1
+    ],
+    "ordinal": false
+  },
+  "abstain": {
+    "enabled": false,
+    "code": 9
+  },
+  "boundaries": {
+    "true": "legal threat, churn risk, distress, security report, repeat contact, or any P0",
+    "false": "an automated answer is safe and probably sufficient"
+  },
+  "priors": {
+    "false": 0.71,
+    "true": 0.29
+  }
+}

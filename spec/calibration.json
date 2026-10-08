@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "fitted": true,
+  "backend": "ollama",
+  "model": "jev",
+  "n_cal": 400,
+  "method": "per-field temperature scaling (NLL, golden-section)",
+  "temperatures": {
+    "blocker_v1": 0.7458035247579902,
+    "gate_human_v1": 0.5219184149207957,
+    "intent_v1": 1.1493366125688362,
+    "route_v1": 1.0763849742228093,
+    "triage_v1": 0.8602136901668876,
+    "urgency_v1": 0.6434841600409579
+  },
+  "authoritative": true,
+  "note": "Fitted against the deployed GGUF."
+}

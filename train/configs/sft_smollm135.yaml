@@ -1,0 +1,40 @@
+# Phase 5 decision SFT — the config that falls out of HARDWARE.md's measurements.
+# Primary JEV model: full fine-tune of SmolLM2-135M in fp32.
+
+model: HuggingFaceTB/SmolLM2-135M
+
+# Revision 1: fp32 is FASTEST on sm_75. Measured, same hardware, same step:
+#   fp32 1818 tok/s | bf16 1385 (emulated) | fp16 AMP 346 (5.3x SLOWER)
+# TU117 has no tensor cores and no fast FP16 path. Do not "optimize" this to bf16.
+dtype: fp32
+
+# Revision 2: loss touches exactly one token, so compute the LM head at one
+# position. +19% throughput, -13% memory, free.
+sliced_lm_head: true
+
+# Revision 3: activations are nearly batch-independent once checkpointing is on
+# (1.49 GiB at both b8 and b16), so a large micro-batch is almost free.
+gradient_checkpointing: true
+micro_batch: 16
+grad_accum: 4            # effective batch 64
+
+max_seq_len: 192         # decisions are short; truncate hard (head+tail kept)
+optim: adamw_8bit        # fp32 AdamW would add ~0.8 GiB of optimizer state
+lr: 1.0e-5
+epochs: 3
+warmup_frac: 0.03
+weight_decay: 0.01
+
+# PLAN.md 6: smoothing is spread over the OTHER LEGAL DIGITS, not the whole vocab.
+label_smoothing: 0.05
+
+# 6 tasks x 96k inputs = 576k pairs is ~46M tokens/epoch (~7 h). Sampling 3 tasks
+# per input halves that for a highly redundant prompt. Set 0 to use all six.
+tasks_per_example: 3
+
+eval_every: 500
+save_every: 500
+dev_max_pairs: 3000      # a full 6-task dev pass is ~36k pairs and would dominate
+early_stop_patience: 4   # on dev macro ECE, NOT accuracy (PLAN.md 6)
+workers: 4
+seed: 20261008

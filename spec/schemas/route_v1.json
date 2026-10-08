@@ -1,0 +1,48 @@
+{
+  "id": "route_v1",
+  "version": 1,
+  "kind": "route",
+  "description": "Team ownership routing for inbound support messages.",
+  "question": "which team should handle this message",
+  "output": {
+    "type": "enum",
+    "values": [
+      "billing",
+      "technical",
+      "account",
+      "sales",
+      "abuse"
+    ],
+    "codes": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "ordinal": false
+  },
+  "abstain": {
+    "enabled": true,
+    "code": 9
+  },
+  "boundaries": {
+    "billing": "charges, invoices, refunds, payment methods, pricing disputes",
+    "technical": "the product is broken or erroring for the user",
+    "account": "login, access, permissions, profile, data export or deletion",
+    "sales": "pre-purchase questions, quotes, upgrades, procurement",
+    "abuse": "spam, ToS violations, harassment reported about another user",
+    "_notes": [
+      "'charged after I could not log in' -> billing (the ask is the charge)",
+      "'cannot log in since the outage' -> technical (cause is an outage)",
+      "'cancel my plan, too expensive' -> billing (intent lives in intent_v1)"
+    ]
+  },
+  "priors": {
+    "billing": 0.28,
+    "technical": 0.34,
+    "account": 0.21,
+    "sales": 0.12,
+    "abuse": 0.05
+  }
+}

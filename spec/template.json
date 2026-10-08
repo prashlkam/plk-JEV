@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "template": "{input}\n#{task_id}\nanswer: ",
+  "notes": [
+    "Input FIRST so k single-field requests on one input share the long prefix.",
+    "Terminator owns the trailing space: space-prefixed digits are not single tokens (spike 0.3), so a prefix ending 'answer:' would make the grammar force a bare digit against the model's preference and corrupt position 0.",
+    "Render ONLY via jev.spec.render_prompt. Ollama exposes no cache-hit flag, but byte-identical text is what makes any prefix reuse possible; measured prompt-eval drops ~40% on the follow-up tasks of one input."
+  ],
+  "abstain_code": 9,
+  "max_input_chars": 2000,
+  "max_seq_len": 192
+}

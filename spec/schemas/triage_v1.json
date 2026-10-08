@@ -1,0 +1,39 @@
+{
+  "id": "triage_v1",
+  "version": 1,
+  "kind": "triage",
+  "description": "Objective severity. Ordinal: distance between codes is meaningful.",
+  "question": "what severity is this",
+  "output": {
+    "type": "ordinal",
+    "values": [
+      "P0",
+      "P1",
+      "P2",
+      "P3"
+    ],
+    "codes": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "ordinal": true
+  },
+  "abstain": {
+    "enabled": true,
+    "code": 9
+  },
+  "boundaries": {
+    "P0": "total outage, data loss, security exposure, payment pipeline down",
+    "P1": "major feature broken, no workaround, blocks the user's core job",
+    "P2": "degraded or broken but a workaround exists",
+    "P3": "cosmetic, question, feature request, no functional impact"
+  },
+  "priors": {
+    "P0": 0.04,
+    "P1": 0.17,
+    "P2": 0.37,
+    "P3": 0.42
+  }
+}

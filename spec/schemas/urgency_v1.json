@@ -1,0 +1,43 @@
+{
+  "id": "urgency_v1",
+  "version": 1,
+  "kind": "score",
+  "description": "Subjective urgency AS EXPRESSED BY THE SENDER. Deliberately distinct from triage_v1 objective severity: a calm P0 and a furious P3 both exist.",
+  "question": "how urgently does the sender need a reply",
+  "output": {
+    "type": "ordinal",
+    "values": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "codes": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "ordinal": true
+  },
+  "abstain": {
+    "enabled": true,
+    "code": 9
+  },
+  "boundaries": {
+    "1": "no time pressure expressed",
+    "2": "mild",
+    "3": "clear deadline or repeated follow-up",
+    "4": "blocked now, explicit frustration",
+    "5": "emergency framing, threats to leave, all-caps insistence"
+  },
+  "priors": {
+    "1": 0.22,
+    "2": 0.26,
+    "3": 0.24,
+    "4": 0.18,
+    "5": 0.1
+  }
+}

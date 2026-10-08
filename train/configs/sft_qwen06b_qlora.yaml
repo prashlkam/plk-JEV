@@ -1,0 +1,40 @@
+# Quality variant — Qwen3-0.6B-Base under QLoRA. A deliberate multi-day run, not
+# the default (HARDWARE.md revision 5).
+#
+# A 0.6B full fine-tune needs ~2.4 GiB for fp32 weights alone, before gradients or
+# optimizer state, against 3.3 GiB available. So 4-bit NF4 + LoRA is the only way
+# this model trains on this card.
+#
+# Expect roughly 3-5x the wall clock of the 135M config: the 4-bit dequantization
+# path is not free, and fp32 compute dtype (required here, see below) is slower
+# than the fp16 compute dtype QLoRA normally uses.
+
+model: Qwen/Qwen3-0.6B-Base
+qlora: true
+lora_r: 16
+
+# NOT the usual fp16 compute dtype — train/sft.py sets bnb_4bit_compute_dtype to
+# float32 because fp16 is 5.3x slower on TU117 (HARDWARE.md revision 1).
+dtype: fp32
+
+sliced_lm_head: true     # bigger win here: vocab 151936 vs SmolLM2's 49152
+gradient_checkpointing: true
+micro_batch: 8
+grad_accum: 8            # effective batch 64
+
+max_seq_len: 192
+optim: adamw_8bit
+
+# Higher LR than the full fine-tune: LoRA adapters start at zero and need it.
+lr: 1.0e-4
+epochs: 2
+warmup_frac: 0.03
+label_smoothing: 0.05
+tasks_per_example: 2     # smaller budget, because each step costs more
+
+eval_every: 400
+save_every: 400
+dev_max_pairs: 2400
+early_stop_patience: 4
+workers: 4
+seed: 20261008

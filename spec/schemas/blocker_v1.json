@@ -1,0 +1,40 @@
+{
+  "id": "blocker_v1",
+  "version": 1,
+  "kind": "extract_enum",
+  "description": "Closed-set extraction: the blocker is usually stated explicitly in the message rather than inferred.",
+  "question": "what is blocking the user right now",
+  "output": {
+    "type": "enum",
+    "values": [
+      "none",
+      "credentials",
+      "payment",
+      "outage",
+      "data_loss",
+      "permissions"
+    ],
+    "codes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "ordinal": false
+  },
+  "abstain": {
+    "enabled": true,
+    "code": 9
+  },
+  "boundaries": {},
+  "priors": {
+    "none": 0.38,
+    "credentials": 0.18,
+    "payment": 0.14,
+    "outage": 0.13,
+    "data_loss": 0.05,
+    "permissions": 0.12
+  }
+}

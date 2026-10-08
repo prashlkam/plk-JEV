@@ -1,0 +1,24 @@
+# Install via: make setup  (uses uv, pins torch to cu126 for sm_75)
+# Exact versions verified on this machine are in requirements.lock.txt
+
+# torch is installed separately: uv pip install torch --torch-backend=cu126
+# cu126 is required because sm_75 (Turing) must be in the wheel's arch list.
+transformers>=4.46
+datasets>=3.0
+accelerate
+peft
+trl
+bitsandbytes
+numpy
+scipy
+scikit-learn
+pydantic>=2
+httpx
+sentencepiece
+protobuf
+matplotlib
+tensorboard
+pytest
+datasketch
+safetensors
+pyyaml

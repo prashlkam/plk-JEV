@@ -1,0 +1,122 @@
+{
+  "n_records": 120000,
+  "n_annotated": 6000,
+  "source": [
+    "synthetic_seed"
+  ],
+  "synthetic": true,
+  "tasks": {
+    "blocker_v1": {
+      "n": 6000,
+      "raters_per_item": [
+        3
+      ],
+      "observed_agreement": 0.9136666666666629,
+      "fleiss_kappa": 0.8740894520711632,
+      "krippendorff_alpha": 0.8740964471016037,
+      "alpha_weighting": "nominal",
+      "fraction_unanimous": 0.8721666666666666,
+      "accuracy_ceiling": 0.9562777777777777,
+      "class_distribution": {
+        "permissions": 2297,
+        "none": 9175,
+        "data_loss": 1106,
+        "payment": 2616,
+        "credentials": 966,
+        "outage": 1840
+      }
+    },
+    "gate_human_v1": {
+      "n": 6000,
+      "raters_per_item": [
+        3
+      ],
+      "observed_agreement": 0.9231111111111078,
+      "fleiss_kappa": 0.8452537321977188,
+      "krippendorff_alpha": 0.8452623292125969,
+      "alpha_weighting": "nominal",
+      "fraction_unanimous": 0.8846666666666667,
+      "accuracy_ceiling": 0.9615555555555556,
+      "class_distribution": {
+        "true": 8288,
+        "false": 9712
+      }
+    },
+    "intent_v1": {
+      "n": 6000,
+      "raters_per_item": [
+        3
+      ],
+      "observed_agreement": 0.9073888888888852,
+      "fleiss_kappa": 0.8816285982908014,
+      "krippendorff_alpha": 0.8816351744797853,
+      "alpha_weighting": "nominal",
+      "fraction_unanimous": 0.8635,
+      "accuracy_ceiling": 0.9528888888888888,
+      "class_distribution": {
+        "question": 3611,
+        "bug_report": 6241,
+        "praise": 2233,
+        "complaint": 3075,
+        "cancel": 1571,
+        "feature_request": 1269
+      }
+    },
+    "route_v1": {
+      "n": 6000,
+      "raters_per_item": [
+        3
+      ],
+      "observed_agreement": 0.8985555555555517,
+      "fleiss_kappa": 0.8681974042940843,
+      "krippendorff_alpha": 0.8682047266605124,
+      "alpha_weighting": "nominal",
+      "fraction_unanimous": 0.8498333333333333,
+      "accuracy_ceiling": 0.948611111111111,
+      "class_distribution": {
+        "account": 3576,
+        "billing": 5051,
+        "technical": 4917,
+        "abuse": 1174,
+        "sales": 3282
+      }
+    },
+    "triage_v1": {
+      "n": 6000,
+      "raters_per_item": [
+        3
+      ],
+      "observed_agreement": 0.9170555555555514,
+      "fleiss_kappa": 0.8751699296595514,
+      "krippendorff_alpha": 0.8795879087700186,
+      "alpha_weighting": "ordinal",
+      "fraction_unanimous": 0.8773333333333333,
+      "accuracy_ceiling": 0.9579444444444445,
+      "class_distribution": {
+        "P0": 1933,
+        "P2": 4764,
+        "P3": 8685,
+        "P1": 2618
+      }
+    },
+    "urgency_v1": {
+      "n": 6000,
+      "raters_per_item": [
+        3
+      ],
+      "observed_agreement": 0.9142777777777737,
+      "fleiss_kappa": 0.8892389564591692,
+      "krippendorff_alpha": 0.897692402009702,
+      "alpha_weighting": "ordinal",
+      "fraction_unanimous": 0.8731666666666666,
+      "accuracy_ceiling": 0.9565555555555555,
+      "class_distribution": {
+        "3": 2054,
+        "4": 3326,
+        "5": 2557,
+        "2": 4402,
+        "1": 5661
+      }
+    }
+  }
+}

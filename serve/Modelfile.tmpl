@@ -1,0 +1,20 @@
+FROM @GGUF@
+
+# Bare passthrough template. JEV is trained on a raw prompt rendered by
+# jev.spec.render_prompt ("{input}\n#{task_id}\nanswer: ") and the SDK calls
+# /api/generate with raw=true, so this template is never applied in the normal
+# path. It exists so that a direct `ollama run jev` does something sane.
+TEMPLATE """{{ .Prompt }}"""
+
+# Greedy decoding is deliberate: for a decision model the argmax IS the answer,
+# and uncertainty is reported via logprobs rather than expressed through sampling.
+# Sampling here would add variance with no upside.
+PARAMETER temperature 0
+PARAMETER top_p 1
+PARAMETER top_k 0
+PARAMETER repeat_penalty 1
+PARAMETER num_predict 4
+
+# JEV emits exactly one digit. num_ctx is sized to spec/template.json max_seq_len
+# plus headroom; raising it costs VRAM that this 4GB card does not have.
+PARAMETER num_ctx 512

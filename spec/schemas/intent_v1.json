@@ -1,0 +1,40 @@
+{
+  "id": "intent_v1",
+  "version": 1,
+  "kind": "classify",
+  "description": "Sender intent.",
+  "question": "what is the sender trying to do",
+  "output": {
+    "type": "enum",
+    "values": [
+      "question",
+      "bug_report",
+      "feature_request",
+      "complaint",
+      "praise",
+      "cancel"
+    ],
+    "codes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "ordinal": false
+  },
+  "abstain": {
+    "enabled": true,
+    "code": 9
+  },
+  "boundaries": {},
+  "priors": {
+    "question": 0.31,
+    "bug_report": 0.26,
+    "feature_request": 0.11,
+    "complaint": 0.19,
+    "praise": 0.05,
+    "cancel": 0.08
+  }
+}

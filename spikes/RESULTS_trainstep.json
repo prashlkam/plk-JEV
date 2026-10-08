@@ -1,0 +1,92 @@
+{
+  "model": "HuggingFaceTB/SmolLM2-135M",
+  "params_m": 134.5,
+  "seq": 192,
+  "vram_total_gib": 3.64,
+  "rows": [
+    {
+      "label": "fp32  ckpt sliced  b8",
+      "ok": true,
+      "opt": "AdamW8bit",
+      "tok_per_s": 1817.7,
+      "step_ms": 845.0,
+      "peak_gib": 1.49,
+      "batch": 8,
+      "seq": 192,
+      "grad_ckpt": true,
+      "sliced_lm_head": true
+    },
+    {
+      "label": "bf16  ckpt sliced  b8",
+      "ok": true,
+      "opt": "AdamW8bit",
+      "tok_per_s": 1385.1,
+      "step_ms": 1109.0,
+      "peak_gib": 0.88,
+      "batch": 8,
+      "seq": 192,
+      "grad_ckpt": true,
+      "sliced_lm_head": true
+    },
+    {
+      "label": "fp16amp ckpt sliced b8",
+      "ok": true,
+      "opt": "AdamW8bit",
+      "tok_per_s": 345.5,
+      "step_ms": 4445.7,
+      "peak_gib": 1.39,
+      "batch": 8,
+      "seq": 192,
+      "grad_ckpt": true,
+      "sliced_lm_head": true
+    },
+    {
+      "label": "fp32  ckpt FULL    b8",
+      "ok": true,
+      "opt": "AdamW8bit",
+      "tok_per_s": 1521.6,
+      "step_ms": 1009.5,
+      "peak_gib": 1.72,
+      "batch": 8,
+      "seq": 192,
+      "grad_ckpt": true,
+      "sliced_lm_head": false
+    },
+    {
+      "label": "fp32  NOckpt sliced b8",
+      "ok": true,
+      "opt": "AdamW8bit",
+      "tok_per_s": 2194.0,
+      "step_ms": 700.1,
+      "peak_gib": 2.82,
+      "batch": 8,
+      "seq": 192,
+      "grad_ckpt": false,
+      "sliced_lm_head": true
+    },
+    {
+      "label": "fp32  ckpt sliced  b16",
+      "ok": true,
+      "opt": "AdamW8bit",
+      "tok_per_s": 1767.2,
+      "step_ms": 1738.4,
+      "peak_gib": 1.49,
+      "batch": 16,
+      "seq": 192,
+      "grad_ckpt": true,
+      "sliced_lm_head": true
+    },
+    {
+      "label": "fp32  ckpt sliced  b32",
+      "ok": true,
+      "opt": "AdamW8bit",
+      "tok_per_s": 1554.7,
+      "step_ms": 3951.9,
+      "peak_gib": 1.62,
+      "batch": 32,
+      "seq": 192,
+      "grad_ckpt": true,
+      "sliced_lm_head": true
+    }
+  ]
+}
